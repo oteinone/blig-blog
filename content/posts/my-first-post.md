@@ -1,41 +1,15 @@
 ---
-title: "My First Blog Post"
+title: "My First Blog Post (... in this blog)"
 date: 2026-01-01
 draft: false
 ---
 
-# Welcome to My Blog!
+# Welcome
 
-This is my first blog post. I'm excited to start sharing my thoughts and experiences here.
+Welcome to read my public journal!
 
-## Getting Started with Hugo
+# Why
 
-Setting up this blog with Hugo was straightforward. Here's what I love about it:
+Recently I've noticed that I have to deal with a lot of abstract matters at work that do not have clear-cut correct answers. I also find that these issues need some processing and I've not found a better way than writing about them yet.
 
-- **Fast**: Hugo builds static sites incredibly quickly
-- **Simple**: Write content in Markdown
-- **Flexible**: Easy to customize and extend
-
-## What's Next?
-
-I plan to write about:
-
-1. My learning journey
-2. Technical projects
-3. Interesting discoveries
-4. Personal reflections
-
-Stay tuned for more content!
-
-## Code Example
-
-Here's a simple example in Python:
-
-```python
-def hello_world():
-    print("Hello, World!")
-
-hello_world()
-```
-
-Looking forward to sharing more with you soon!
+This blog is an attempt to build a better mental model (and with that better intuition) by organizing my thoughts on leadership in a software development organization in a shareable format (public blog).

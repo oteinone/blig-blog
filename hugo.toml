@@ -1,5 +1,5 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
+baseURL = 'https://blig.blog/'
+languageCode = 'en-gb'
 title = 'My Personal Blog'
 theme = 'simple'
 
