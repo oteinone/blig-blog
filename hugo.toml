@@ -1,6 +1,6 @@
 baseURL = 'https://blig.blog/'
 languageCode = 'en-gb'
-title = 'My Personal Blog'
+title = 'Thought engineering'
 theme = 'simple'
 
 [params]
