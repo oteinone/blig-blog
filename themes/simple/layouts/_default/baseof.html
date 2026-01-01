@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="{{ or site.Language.LanguageCode site.Language.Lang }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} - {{ site.Title }}{{ end }}</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --text-muted: #666666;
+      --border-color: #eeeeee;
+      --link-color: #0066cc;
+      --link-hover: #0052a3;
+      --header-bg: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #1a1a1a;
+      --text-color: #e0e0e0;
+      --text-muted: #a0a0a0;
+      --border-color: #333333;
+      --link-color: #4a9eff;
+      --link-hover: #80b3ff;
+      --header-bg: #1a1a1a;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+      flex: 1;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    nav {
+      margin-top: 10px;
+      flex-basis: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--link-color);
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: var(--link-hover);
+    }
+
+    .github-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .github-link svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--link-color);
+    }
+
+    .github-link:hover svg {
+      fill: var(--link-hover);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 2px solid var(--border-color);
+      color: var(--text-color);
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 0.9em;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--link-color);
+      color: var(--link-color);
+    }
+
+    .theme-toggle svg {
+      display: none;
+    }
+
+    .theme-toggle svg.active {
+      display: block;
+    }
+
+    main {
+      min-height: 60vh;
+    }
+
+    .post-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .post-list li {
+      margin-bottom: 30px;
+    }
+
+    .post-date {
+      color: var(--text-muted);
+      font-size: 0.9em;
+    }
+
+    .post-title {
+      font-size: 1.5em;
+      margin: 5px 0;
+    }
+
+    .post-title a {
+      text-decoration: none;
+      color: var(--text-color);
+    }
+
+    .post-title a:hover {
+      color: var(--link-color);
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 2px solid var(--border-color);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="/" style="text-decoration: none; color: inherit;">{{ site.Title }}</a></h1>
+    <div class="header-controls">
+      <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+    </div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+    </nav>
+  </header>
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer>
+    <p>&copy; {{ now.Year }} {{ site.Title }}</p>
+    <p>
+      <a href="https://github.com/oteinone/blig-blog" target="_blank" rel="noopener noreferrer" class="github-link">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        GitHub
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    // Dark mode toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const moonIcon = document.getElementById('moon');
+    const sunIcon = document.getElementById('sun');
+
+    // Check system preference for dark mode
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const currentTheme = prefersDark ? 'dark' : 'light';
+    html.setAttribute('data-theme', currentTheme);
+
+    // Update icon based on current theme
+    function updateIcon(theme) {
+      if (theme === 'dark') {
+        moonIcon.classList.remove('active');
+        sunIcon.classList.add('active');
+      } else {
+        moonIcon.classList.add('active');
+        sunIcon.classList.remove('active');
+      }
+    }
+
+    updateIcon(currentTheme);
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      const theme = html.getAttribute('data-theme');
+      const newTheme = theme === 'light' ? 'dark' : 'light';
+
+      html.setAttribute('data-theme', newTheme);
+      updateIcon(newTheme);
+    });
+  </script>
+</body>
+</html>
